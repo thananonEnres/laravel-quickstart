@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Task as Task;
 use Illuminate\Http\Request;
 use App\Repositories\TaskRepository;
+use JavaScript;
 
 class TaskController extends Controller
 {
@@ -36,9 +37,14 @@ class TaskController extends Controller
 	 */
 	public function index(Request $request)
 	{
-		return view('tasks.index', [
-            'tasks' => $this->tasks->forUser($request->user()),
-        ]);
+		// return view('tasks.index', [
+  //           'tasks' => $this->tasks->forUser($request->user()),
+  //       ]);
+    JavaScript::put([
+        'tasks' => $this->tasks->forUser($request->user()),
+    ]);
+
+    return view('tasks.index');
 	}
 
 	/**

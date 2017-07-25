@@ -41199,6 +41199,103 @@ if (document.getElementById('example')) {
     __WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Example, null), document.getElementById('example'));
 }
 
+var TaskExample = function (_Component2) {
+    _inherits(TaskExample, _Component2);
+
+    function TaskExample() {
+        _classCallCheck(this, TaskExample);
+
+        return _possibleConstructorReturn(this, (TaskExample.__proto__ || Object.getPrototypeOf(TaskExample)).apply(this, arguments));
+    }
+
+    _createClass(TaskExample, [{
+        key: 'render',
+        value: function render() {
+            return (
+                // <div>
+                //     <h1>Hey, {window.tasks[0].name}</h1>
+                // </div>
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'div',
+                    { 'class': 'panel panel-default' },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'div',
+                        { 'class': 'panel-heading' },
+                        'Current Tasks'
+                    ),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'div',
+                        { 'class': 'panel-body' },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'table',
+                            { 'class': 'table table-striped task-table' },
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                'thead',
+                                null,
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    'th',
+                                    null,
+                                    'Task'
+                                ),
+                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                                    'th',
+                                    null,
+                                    '\xA0'
+                                )
+                            ),
+                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('tbody', null)
+                        )
+                    )
+                )
+            );
+        }
+    }]);
+
+    return TaskExample;
+}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
+
+if (document.getElementById('currentTasks')) {
+    __WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(TaskExample, null), document.getElementById('currentTasks'));
+}
+
+// <div class="panel panel-default">
+//   <div class="panel-heading">
+//       Current Tasks
+//   </div>
+
+//   <div class="panel-body">
+//       <table class="table table-striped task-table">
+
+//           <!-- Table Headings -->
+//           <thead>
+//               <th>Task</th>
+//               <th>&nbsp;</th>
+//           </thead>
+// <tbody>
+//     @foreach ($tasks as $task)
+//         <tr>
+//             <!-- Task Name -->
+//             <td class="table-text">
+//                 <div>{{ $task->name }}</div>
+//             </td>
+
+//             <td>
+//                 <form action="{{ url('task/'.$task->id) }}" method="POST">
+//                     {{ csrf_field() }}
+//                     {{ method_field('DELETE') }}
+
+//                     <button type="submit" id="delete-task-{{ $task->id }}" class="btn btn-danger">
+//                         <i class="fa fa-btn fa-trash"></i>Delete
+//                     </button>
+//                 </form>
+//             </td>
+//         </tr>
+//     @endforeach
+// </tbody>
+//       </table>
+//   </div>
+// </div>
+
 /***/ }),
 /* 116 */
 /***/ (function(module, exports, __webpack_require__) {
