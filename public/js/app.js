@@ -41181,7 +41181,8 @@ var Example = function (_Component) {
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'h1',
                     null,
-                    'Cool, it\'s working'
+                    'Hey, ',
+                    window.name
                 )
             );
         }

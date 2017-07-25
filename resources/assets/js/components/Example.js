@@ -5,7 +5,7 @@ class Example extends Component {
     render() {
         return (
             <div>
-                <h1>Cool, it's working</h1>
+                <h1>Hey, {window.name}</h1>
             </div>
         );
     }
