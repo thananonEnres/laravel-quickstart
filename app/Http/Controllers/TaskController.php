@@ -40,11 +40,15 @@ class TaskController extends Controller
 		// return view('tasks.index', [
   //           'tasks' => $this->tasks->forUser($request->user()),
   //       ]);
+    $tasks = $this->tasks->forUser($request->user());
     JavaScript::put([
-        'tasks' => $this->tasks->forUser($request->user()),
+        'tasks' => $tasks,
+        'csrf' => csrf_token(),
+        'method' => method_field('DELETE'),
+        'delAction' => url('task'),
     ]);
 
-    return view('tasks.index');
+    return view('tasks.index', ['tasks' => $tasks]);
 	}
 
 	/**

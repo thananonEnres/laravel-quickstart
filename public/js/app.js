@@ -41164,31 +41164,31 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 var Example = function (_Component) {
-    _inherits(Example, _Component);
+  _inherits(Example, _Component);
 
-    function Example() {
-        _classCallCheck(this, Example);
+  function Example() {
+    _classCallCheck(this, Example);
 
-        return _possibleConstructorReturn(this, (Example.__proto__ || Object.getPrototypeOf(Example)).apply(this, arguments));
+    return _possibleConstructorReturn(this, (Example.__proto__ || Object.getPrototypeOf(Example)).apply(this, arguments));
+  }
+
+  _createClass(Example, [{
+    key: 'render',
+    value: function render() {
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'div',
+        null,
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'h1',
+          null,
+          'Hey, ',
+          window.name
+        )
+      );
     }
+  }]);
 
-    _createClass(Example, [{
-        key: 'render',
-        value: function render() {
-            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                'div',
-                null,
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'h1',
-                    null,
-                    'Hey, ',
-                    window.name
-                )
-            );
-        }
-    }]);
-
-    return Example;
+  return Example;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
 
 /* unused harmony default export */ var _unused_webpack_default_export = (Example);
@@ -41196,66 +41196,179 @@ var Example = function (_Component) {
 // We only want to try to render our component on pages that have a div with an ID
 // of "example"; otherwise, we will see an error in our console 
 if (document.getElementById('example')) {
-    __WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Example, null), document.getElementById('example'));
+  __WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Example, null), document.getElementById('example'));
 }
 
-var TaskExample = function (_Component2) {
-    _inherits(TaskExample, _Component2);
+var TaskRow = function (_Component2) {
+  _inherits(TaskRow, _Component2);
 
-    function TaskExample() {
-        _classCallCheck(this, TaskExample);
+  function TaskRow() {
+    _classCallCheck(this, TaskRow);
 
-        return _possibleConstructorReturn(this, (TaskExample.__proto__ || Object.getPrototypeOf(TaskExample)).apply(this, arguments));
+    return _possibleConstructorReturn(this, (TaskRow.__proto__ || Object.getPrototypeOf(TaskRow)).apply(this, arguments));
+  }
+
+  _createClass(TaskRow, [{
+    key: 'render',
+    value: function render() {
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'td',
+        { 'class': 'table-text' },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'div',
+          null,
+          this.props.taskName
+        )
+      );
     }
+  }]);
 
-    _createClass(TaskExample, [{
-        key: 'render',
-        value: function render() {
-            return (
-                // <div>
-                //     <h1>Hey, {window.tasks[0].name}</h1>
-                // </div>
+  return TaskRow;
+}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
+
+var CsrfInput = function (_Component3) {
+  _inherits(CsrfInput, _Component3);
+
+  function CsrfInput() {
+    _classCallCheck(this, CsrfInput);
+
+    return _possibleConstructorReturn(this, (CsrfInput.__proto__ || Object.getPrototypeOf(CsrfInput)).apply(this, arguments));
+  }
+
+  _createClass(CsrfInput, [{
+    key: 'render',
+    value: function render() {
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'hidden', name: '_token', value: window.csrf });
+    }
+  }]);
+
+  return CsrfInput;
+}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
+
+var MethodDel = function (_Component4) {
+  _inherits(MethodDel, _Component4);
+
+  function MethodDel() {
+    _classCallCheck(this, MethodDel);
+
+    return _possibleConstructorReturn(this, (MethodDel.__proto__ || Object.getPrototypeOf(MethodDel)).apply(this, arguments));
+  }
+
+  _createClass(MethodDel, [{
+    key: 'render',
+    value: function render() {
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'hidden', name: '_method', value: 'DELETE' });
+    }
+  }]);
+
+  return MethodDel;
+}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
+
+var DelBut = function (_React$Component) {
+  _inherits(DelBut, _React$Component);
+
+  function DelBut() {
+    _classCallCheck(this, DelBut);
+
+    return _possibleConstructorReturn(this, (DelBut.__proto__ || Object.getPrototypeOf(DelBut)).apply(this, arguments));
+  }
+
+  _createClass(DelBut, [{
+    key: 'render',
+    value: function render() {
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'td',
+        null,
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'form',
+          { action: window.delAction + '/' + this.props.taskId, method: 'POST' },
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(CsrfInput, null),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(MethodDel, null),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'button',
+            { type: 'submit', id: 'delete-task-', 'class': 'btn btn-danger' },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { 'class': 'fa fa-btn fa-trash' }),
+            'Delete'
+          )
+        )
+      );
+    }
+  }]);
+
+  return DelBut;
+}(__WEBPACK_IMPORTED_MODULE_0_react___default.a.Component);
+
+var TaskExample = function (_Component5) {
+  _inherits(TaskExample, _Component5);
+
+  function TaskExample() {
+    _classCallCheck(this, TaskExample);
+
+    return _possibleConstructorReturn(this, (TaskExample.__proto__ || Object.getPrototypeOf(TaskExample)).apply(this, arguments));
+  }
+
+  _createClass(TaskExample, [{
+    key: 'renderRow',
+    value: function renderRow(task) {
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'tr',
+        null,
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(TaskRow, { taskName: task.name }),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(DelBut, { taskId: task.id })
+      );
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return (
+        // <div>
+        //     <h1>Hey, {window.tasks[0].name}</h1>
+        // </div>
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'div',
+          { 'class': 'panel panel-default' },
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'div',
+            { 'class': 'panel-heading' },
+            'Current Tasks'
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'div',
+            { 'class': 'panel-body' },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'table',
+              { 'class': 'table table-striped task-table' },
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'thead',
+                null,
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                    'div',
-                    { 'class': 'panel panel-default' },
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        'div',
-                        { 'class': 'panel-heading' },
-                        'Current Tasks'
-                    ),
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                        'div',
-                        { 'class': 'panel-body' },
-                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                            'table',
-                            { 'class': 'table table-striped task-table' },
-                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                'thead',
-                                null,
-                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                    'th',
-                                    null,
-                                    'Task'
-                                ),
-                                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                                    'th',
-                                    null,
-                                    '\xA0'
-                                )
-                            ),
-                            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('tbody', null)
-                        )
-                    )
+                  'th',
+                  null,
+                  'Task'
+                ),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                  'th',
+                  null,
+                  '\xA0'
                 )
-            );
-        }
-    }]);
+              ),
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'tbody',
+                null,
+                window.tasks.map(this.renderRow)
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
 
-    return TaskExample;
+  return TaskExample;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
 
 if (document.getElementById('currentTasks')) {
-    __WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(TaskExample, null), document.getElementById('currentTasks'));
+  __WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(TaskExample, null), document.getElementById('currentTasks'));
 }
 
 // <div class="panel panel-default">
@@ -41284,9 +41397,9 @@ if (document.getElementById('currentTasks')) {
 //                     {{ csrf_field() }}
 //                     {{ method_field('DELETE') }}
 
-//                     <button type="submit" id="delete-task-{{ $task->id }}" class="btn btn-danger">
-//                         <i class="fa fa-btn fa-trash"></i>Delete
-//                     </button>
+// <button type="submit" id="delete-task-{{ $task->id }}" class="btn btn-danger">
+//     <i class="fa fa-btn fa-trash"></i>Delete
+// </button>
 //                 </form>
 //             </td>
 //         </tr>
