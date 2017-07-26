@@ -22,7 +22,7 @@ if (document.getElementById('example')) {
 class TaskRow extends Component {
   render () {
     return (
-      <td class="table-text">
+      <td className="table-text">
         <div>{this.props.taskName}</div>
       </td>
     )
@@ -51,8 +51,8 @@ class DelBut extends React.Component {
         <form action={window.delAction + '/' + this.props.taskId} method="POST">
           <CsrfInput />
           <MethodDel />
-          <button type="submit" id="delete-task-" class="btn btn-danger">
-              <i class="fa fa-btn fa-trash"></i>Delete
+          <button type="submit" id="delete-task-" className="btn btn-danger">
+              <i className="fa fa-btn fa-trash"></i>Delete
           </button>
         </form>
       </td>
@@ -73,12 +73,12 @@ class TaskExample extends Component {
           // <div>
           //     <h1>Hey, {window.tasks[0].name}</h1>
           // </div>
-          <div class="panel panel-default">
-            <div class="panel-heading">
+          <div className="panel panel-default">
+            <div className="panel-heading">
               Current Tasks
             </div>
-            <div class="panel-body">
-              <table class="table table-striped task-table">
+            <div className="panel-body">
+              <table className="table table-striped task-table">
                 <thead>
                   <th>Task</th>
                   <th>&nbsp;</th>

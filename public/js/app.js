@@ -41213,7 +41213,7 @@ var TaskRow = function (_Component2) {
     value: function render() {
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'td',
-        { 'class': 'table-text' },
+        { className: 'table-text' },
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'div',
           null,
@@ -41286,8 +41286,8 @@ var DelBut = function (_React$Component) {
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(MethodDel, null),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'button',
-            { type: 'submit', id: 'delete-task-', 'class': 'btn btn-danger' },
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { 'class': 'fa fa-btn fa-trash' }),
+            { type: 'submit', id: 'delete-task-', className: 'btn btn-danger' },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fa fa-btn fa-trash' }),
             'Delete'
           )
         )
@@ -41326,18 +41326,18 @@ var TaskExample = function (_Component5) {
         // </div>
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'div',
-          { 'class': 'panel panel-default' },
+          { className: 'panel panel-default' },
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'div',
-            { 'class': 'panel-heading' },
+            { className: 'panel-heading' },
             'Current Tasks'
           ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'div',
-            { 'class': 'panel-body' },
+            { className: 'panel-body' },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               'table',
-              { 'class': 'table table-striped task-table' },
+              { className: 'table table-striped task-table' },
               __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'thead',
                 null,
