@@ -44,7 +44,6 @@ class TaskController extends Controller
     JavaScript::put([
         'tasks' => $tasks,
         'csrf' => csrf_token(),
-        'method' => method_field('DELETE'),
         'delAction' => url('task'),
     ]);
 

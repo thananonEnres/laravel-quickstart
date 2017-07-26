@@ -21,21 +21,25 @@ if (document.getElementById('example')) {
 
 class TaskRow extends Component {
   render () {
+    var taskName1 = this.props.taskName;
     return (
       <td className="table-text">
-        <div>{this.props.taskName}</div>
+        <div>{taskName1}</div>
       </td>
     )
   }
 }
+
 class CsrfInput extends Component {
   render () {
+    var oooh = document.getElementsByName('csrf-token')[0].content;
     return (
-      <input type="hidden" name="_token" value={window.csrf}>
+      <input type="hidden" name="_token" value={oooh}>
       </input>
     )
   }
 }
+
 class MethodDel extends Component {
   render () {
     return (
@@ -46,12 +50,13 @@ class MethodDel extends Component {
 }
 class DelBut extends React.Component {
   render () {
+    var tskId = this.props.taskId;
     return (
       <td>
         <form action={window.delAction + '/' + this.props.taskId} method="POST">
           <CsrfInput />
           <MethodDel />
-          <button type="submit" id="delete-task-" className="btn btn-danger">
+          <button type="submit" id={"delete-task-" + tskId} className="btn btn-danger">
               <i className="fa fa-btn fa-trash"></i>Delete
           </button>
         </form>
@@ -69,10 +74,8 @@ class TaskExample extends Component {
     );
   }
   render() {
+      var tasks = window.tasks;
       return (
-          // <div>
-          //     <h1>Hey, {window.tasks[0].name}</h1>
-          // </div>
           <div className="panel panel-default">
             <div className="panel-heading">
               Current Tasks
@@ -84,8 +87,7 @@ class TaskExample extends Component {
                   <th>&nbsp;</th>
                 </thead>
                 <tbody>
-                  {window.tasks.map(this.renderRow)}
-                 
+                  {tasks.map(this.renderRow)}
                 </tbody>
               </table>
             </div>
@@ -99,42 +101,51 @@ if(document.getElementById('currentTasks')) {
   ReactDOM.render(<TaskExample />, document.getElementById('currentTasks'))
 }
 
-// <div class="panel panel-default">
-//   <div class="panel-heading">
-//       Current Tasks
-//   </div>
+class NewTaskClass extends React.Component {
+  render () {
+    return (
+      <form action={window.delAction} method="POST" className="form-horizontal">
+        <CsrfInput />
+        <div className="form-group">
+          <label for="task-name" className="col-sm-3 control-label">Task</label>
 
-//   <div class="panel-body">
-//       <table class="table table-striped task-table">
+          <div className="col-sm-6">
+              <input type="text" name="name" id="task-name" className="form-control"/>
+          </div>
+        </div>
+        <div className="form-group">
+            <div className="col-sm-offset-3 col-sm-6">
+                <button type="submit" className="btn btn-default">
+                    <i className="fa fa-plus"></i> Add Task
+                </button>
+            </div>
+        </div>
+      </form>
+    );
+  }
+}
 
-//           <!-- Table Headings -->
-//           <thead>
-//               <th>Task</th>
-//               <th>&nbsp;</th>
-//           </thead>
-          // <tbody>
-          //     @foreach ($tasks as $task)
-          //         <tr>
-          //             <!-- Task Name -->
-          //             <td class="table-text">
-          //                 <div>{{ $task->name }}</div>
-          //             </td>
-
-          //             <td>
-          //                 <form action="{{ url('task/'.$task->id) }}" method="POST">
-          //                     {{ csrf_field() }}
-          //                     {{ method_field('DELETE') }}
-
-                              // <button type="submit" id="delete-task-{{ $task->id }}" class="btn btn-danger">
-                              //     <i class="fa fa-btn fa-trash"></i>Delete
-                              // </button>
-          //                 </form>
-          //             </td>
-          //         </tr>
-          //     @endforeach
-          // </tbody>
-//       </table>
-//   </div>
-// </div>
+if(document.getElementById('newTask')) {
+  ReactDOM.render(<NewTaskClass />, document.getElementById('newTask'))
+}
 
 
+// <form action="{{ url('task') }}" method="POST" class="form-horizontal">
+//     {{ csrf_field() }}
+
+//     <div class="form-group">
+//         <label for="task-name" class="col-sm-3 control-label">Task</label>
+
+//         <div class="col-sm-6">
+//             <input type="text" name="name" id="task-name" class="form-control"/>
+//         </div>
+//     </div>
+
+//     <div class="form-group">
+//         <div class="col-sm-offset-3 col-sm-6">
+//             <button type="submit" class="btn btn-default">
+//                 <i class="fa fa-plus"></i> Add Task
+//             </button>
+//         </div>
+//     </div>
+// </form>

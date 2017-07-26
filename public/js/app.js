@@ -41211,13 +41211,14 @@ var TaskRow = function (_Component2) {
   _createClass(TaskRow, [{
     key: 'render',
     value: function render() {
+      var taskName1 = this.props.taskName;
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'td',
         { className: 'table-text' },
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'div',
           null,
-          this.props.taskName
+          taskName1
         )
       );
     }
@@ -41238,7 +41239,8 @@ var CsrfInput = function (_Component3) {
   _createClass(CsrfInput, [{
     key: 'render',
     value: function render() {
-      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'hidden', name: '_token', value: window.csrf });
+      var oooh = document.getElementsByName('csrf-token')[0].content;
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'hidden', name: '_token', value: oooh });
     }
   }]);
 
@@ -41276,6 +41278,7 @@ var DelBut = function (_React$Component) {
   _createClass(DelBut, [{
     key: 'render',
     value: function render() {
+      var tskId = this.props.taskId;
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'td',
         null,
@@ -41286,7 +41289,7 @@ var DelBut = function (_React$Component) {
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(MethodDel, null),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'button',
-            { type: 'submit', id: 'delete-task-', className: 'btn btn-danger' },
+            { type: 'submit', id: "delete-task-" + tskId, className: 'btn btn-danger' },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fa fa-btn fa-trash' }),
             'Delete'
           )
@@ -41320,43 +41323,39 @@ var TaskExample = function (_Component5) {
   }, {
     key: 'render',
     value: function render() {
-      return (
-        // <div>
-        //     <h1>Hey, {window.tasks[0].name}</h1>
-        // </div>
+      var tasks = window.tasks;
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'div',
+        { className: 'panel panel-default' },
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'div',
-          { className: 'panel panel-default' },
+          { className: 'panel-heading' },
+          'Current Tasks'
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'div',
+          { className: 'panel-body' },
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'div',
-            { className: 'panel-heading' },
-            'Current Tasks'
-          ),
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'div',
-            { className: 'panel-body' },
+            'table',
+            { className: 'table table-striped task-table' },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-              'table',
-              { className: 'table table-striped task-table' },
+              'thead',
+              null,
               __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                'thead',
+                'th',
                 null,
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                  'th',
-                  null,
-                  'Task'
-                ),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                  'th',
-                  null,
-                  '\xA0'
-                )
+                'Task'
               ),
               __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                'tbody',
+                'th',
                 null,
-                window.tasks.map(this.renderRow)
+                '\xA0'
               )
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'tbody',
+              null,
+              tasks.map(this.renderRow)
             )
           )
         )
@@ -41371,43 +41370,80 @@ if (document.getElementById('currentTasks')) {
   __WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(TaskExample, null), document.getElementById('currentTasks'));
 }
 
-// <div class="panel panel-default">
-//   <div class="panel-heading">
-//       Current Tasks
-//   </div>
+var NewTaskClass = function (_React$Component2) {
+  _inherits(NewTaskClass, _React$Component2);
 
-//   <div class="panel-body">
-//       <table class="table table-striped task-table">
+  function NewTaskClass() {
+    _classCallCheck(this, NewTaskClass);
 
-//           <!-- Table Headings -->
-//           <thead>
-//               <th>Task</th>
-//               <th>&nbsp;</th>
-//           </thead>
-// <tbody>
-//     @foreach ($tasks as $task)
-//         <tr>
-//             <!-- Task Name -->
-//             <td class="table-text">
-//                 <div>{{ $task->name }}</div>
-//             </td>
+    return _possibleConstructorReturn(this, (NewTaskClass.__proto__ || Object.getPrototypeOf(NewTaskClass)).apply(this, arguments));
+  }
 
-//             <td>
-//                 <form action="{{ url('task/'.$task->id) }}" method="POST">
-//                     {{ csrf_field() }}
-//                     {{ method_field('DELETE') }}
+  _createClass(NewTaskClass, [{
+    key: 'render',
+    value: function render() {
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'form',
+        { action: window.delAction, method: 'POST', className: 'form-horizontal' },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(CsrfInput, null),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'div',
+          { className: 'form-group' },
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'label',
+            { 'for': 'task-name', className: 'col-sm-3 control-label' },
+            'Task'
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'div',
+            { className: 'col-sm-6' },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'text', name: 'name', id: 'task-name', className: 'form-control' })
+          )
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'div',
+          { className: 'form-group' },
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'div',
+            { className: 'col-sm-offset-3 col-sm-6' },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'button',
+              { type: 'submit', className: 'btn btn-default' },
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('i', { className: 'fa fa-plus' }),
+              ' Add Task'
+            )
+          )
+        )
+      );
+    }
+  }]);
 
-// <button type="submit" id="delete-task-{{ $task->id }}" class="btn btn-danger">
-//     <i class="fa fa-btn fa-trash"></i>Delete
-// </button>
-//                 </form>
-//             </td>
-//         </tr>
-//     @endforeach
-// </tbody>
-//       </table>
-//   </div>
-// </div>
+  return NewTaskClass;
+}(__WEBPACK_IMPORTED_MODULE_0_react___default.a.Component);
+
+if (document.getElementById('newTask')) {
+  __WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(NewTaskClass, null), document.getElementById('newTask'));
+}
+
+// <form action="{{ url('task') }}" method="POST" class="form-horizontal">
+//     {{ csrf_field() }}
+
+//     <div class="form-group">
+//         <label for="task-name" class="col-sm-3 control-label">Task</label>
+
+//         <div class="col-sm-6">
+//             <input type="text" name="name" id="task-name" class="form-control"/>
+//         </div>
+//     </div>
+
+//     <div class="form-group">
+//         <div class="col-sm-offset-3 col-sm-6">
+//             <button type="submit" class="btn btn-default">
+//                 <i class="fa fa-plus"></i> Add Task
+//             </button>
+//         </div>
+//     </div>
+// </form>
 
 /***/ }),
 /* 116 */
