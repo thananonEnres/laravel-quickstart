@@ -129,6 +129,36 @@ if(document.getElementById('newTask')) {
   ReactDOM.render(<NewTaskClass />, document.getElementById('newTask'))
 }
 
+class ApiTaskList extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      tasks: [],
+    }
+  }
+
+  componentDidMount() {
+    fetch(window.url,{
+      method: 'get',
+      credentials: "same-origin",
+    })
+      .then(response => {
+        return response.json();
+      })
+      .then(tasks => {
+        this.setState({tasks});
+      });
+  }
+
+  render() {
+    return (<p>hello</p>);
+  }
+}
+
+if(document.getElementById('currentTasksApi')) {
+  ReactDOM.render(<ApiTaskList />, document.getElementById('currentTasksApi'))
+}
 
 // <form action="{{ url('task') }}" method="POST" class="form-horizontal">
 //     {{ csrf_field() }}

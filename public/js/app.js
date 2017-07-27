@@ -41425,6 +41425,52 @@ if (document.getElementById('newTask')) {
   __WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(NewTaskClass, null), document.getElementById('newTask'));
 }
 
+var ApiTaskList = function (_Component6) {
+  _inherits(ApiTaskList, _Component6);
+
+  function ApiTaskList(props) {
+    _classCallCheck(this, ApiTaskList);
+
+    var _this8 = _possibleConstructorReturn(this, (ApiTaskList.__proto__ || Object.getPrototypeOf(ApiTaskList)).call(this, props));
+
+    _this8.state = {
+      tasks: []
+    };
+    return _this8;
+  }
+
+  _createClass(ApiTaskList, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      var _this9 = this;
+
+      fetch(window.url, {
+        method: 'get',
+        credentials: "same-origin"
+      }).then(function (response) {
+        return response.json();
+      }).then(function (tasks) {
+        _this9.setState({ tasks: tasks });
+      });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'p',
+        null,
+        'hello'
+      );
+    }
+  }]);
+
+  return ApiTaskList;
+}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
+
+if (document.getElementById('currentTasksApi')) {
+  __WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(ApiTaskList, null), document.getElementById('currentTasksApi'));
+}
+
 // <form action="{{ url('task') }}" method="POST" class="form-horizontal">
 //     {{ csrf_field() }}
 

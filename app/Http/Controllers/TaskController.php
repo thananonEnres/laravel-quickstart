@@ -50,6 +50,21 @@ class TaskController extends Controller
     return view('tasks.index', ['tasks' => $tasks]);
 	}
 
+  public function index2(Request $request)
+  {
+    $tasks = $this->tasks->forUser($request->user());
+    JavaScript::put([
+      'url' => url('/api/tasks'),
+    ]);
+
+    return view('tasks.index2', ['tasks' => $tasks]);
+  }
+
+  public function apiIndex(Request $request)
+  {
+    return $this->tasks->forUser($request->user());
+  }
+
 	/**
 	 * Create a new task.
 	 *
