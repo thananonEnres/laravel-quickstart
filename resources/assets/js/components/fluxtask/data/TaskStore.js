@@ -39,7 +39,7 @@ class TaskStore extends ReduceStore {
           return state;
         }
         const id = Counter.increment();
-        return state.set(id, new Todo({
+        return state.set(id, new Task({
           id,
           text: action.text,
           complete: false,
