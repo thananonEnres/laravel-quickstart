@@ -2,6 +2,11 @@
 
 @extends('layouts.app')
 
+@section('head')
+    <link rel="stylesheet" href="{{asset('css/todomvc-common/base.css')}}">
+    
+@endsection
+
 @section('content')
 
     <!-- Bootstrap Boilerplate... -->

@@ -3,32 +3,15 @@ import {ReduceStore} from 'flux/utils';
 import TaskActionTypes from './TaskActionTypes';
 import TaskDispatcher from './TaskDispatcher';
 import Counter from './Counter';
-import Task from './Task'
+import Task from './Task';
 
 class TaskStore extends ReduceStore {
   constructor() {
     super(TaskDispatcher);
-
-    this.state = {
-      tasks: [],
-    }
   }
 
   getInitialState(){
     return Immutable.OrderedMap();
-  }
-
-  componentDidMount() {
-    fetch(window.url,{
-      method: 'get',
-      credentials: "same-origin",
-    })
-      .then(response => {
-        return response.json();
-      })
-      .then(tasks => {
-        this.setState({tasks});
-      });
   }
   
   reduce(state, action) {
@@ -44,6 +27,15 @@ class TaskStore extends ReduceStore {
           text: action.text,
           complete: false,
         }));
+
+      case TaskActionTypes.DELETE_TASK:
+        return state.delete(action.id);
+
+      case TaskActionTypes.TOGGLE_TASK:
+        return state.update(
+          action.id,
+          task => task.set('complete', !task.complete),
+        );
 
       default:
         return state;

@@ -1,6 +1,7 @@
 import AppView from '../views/AppView';
 import {Container} from 'flux/utils';
 import TaskStore from '../data/TaskStore';
+import TaskActions from '../data/TaskActions';
 
 function getStores() {
   return [
@@ -10,7 +11,10 @@ function getStores() {
 
 function getState() {
   return {
-    Tasks: TaskStore.getState(),
+    tasks: TaskStore.getState(),
+
+    onDeleteTask: TaskActions.deleteTask,
+    onToggleTask: TaskActions.toggleTask,
   };
 }
 

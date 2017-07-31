@@ -36,6 +36,4 @@ Route::get('/reactrouter', function(){
  return view('reactRouter');
 });
 
-Route::get('/fluxtask', function() {
-  return view('fluxtask');
-});
+Route::get('/fluxtask', 'TaskController@index3');

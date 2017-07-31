@@ -1,0 +1,768 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"react",
+				"reactrouter"
+			],
+			[
+				"ex",
+				"extends"
+			],
+			[
+				"ReRo",
+				"ReRoApp"
+			],
+			[
+				"re",
+				"resources"
+			],
+			[
+				"cur",
+				"currentTasksApi"
+			],
+			[
+				"csrf",
+				"CsrfInput"
+			],
+			[
+				"get",
+				"getElementById"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "resources/views/tasks/index2.blade.php",
+			"settings":
+			{
+				"buffer_size": 2778,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "resources/assets/js/app.js",
+			"settings":
+			{
+				"buffer_size": 711,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "resources/assets/js/components/Example.js",
+			"settings":
+			{
+				"buffer_size": 4487,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "resources/assets/js/components/ReRoApp.js",
+			"settings":
+			{
+				"buffer_size": 1865,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "webpack.mix.js",
+			"settings":
+			{
+				"buffer_size": 552,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "resources/views/layouts/app.blade.php",
+			"settings":
+			{
+				"buffer_size": 3311,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/Http/Controllers/TaskController.php",
+			"settings":
+			{
+				"buffer_size": 1969,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "routes/web.php",
+			"settings":
+			{
+				"buffer_size": 2074,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "resources/views/reactRouter.blade.php",
+			"settings":
+			{
+				"buffer_size": 2812,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "pack",
+		"selected_items":
+		[
+			[
+				"pack",
+				"Package Control: Install Package"
+			],
+			[
+				"phpfmt",
+				"phpfmt: format now"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: rem",
+				"Package Control: Remove Package"
+			],
+			[
+				"Package Control: Install",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 467.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d39e33b79698005270310898eea76'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/enresmacmini1/Code/interQuickstart",
+		"/Users/enresmacmini1/Code/interQuickstart/resources",
+		"/Users/enresmacmini1/Code/interQuickstart/resources/assets",
+		"/Users/enresmacmini1/Code/interQuickstart/resources/assets/js",
+		"/Users/enresmacmini1/Code/interQuickstart/resources/assets/js/components",
+		"/Users/enresmacmini1/Code/interQuickstart/resources/views"
+	],
+	"file_history":
+	[
+		"/Users/enresmacmini1/Code/interQuickstart/resources/assets/js/components/DeactRouterTest.js",
+		"/Users/enresmacmini1/Code/interQuickstart/resources/assets/js/components/Example.js",
+		"/Users/enresmacmini1/Code/quickstart/routes/web.php",
+		"/Users/enresmacmini1/Code/Hello/routes/web.php",
+		"/Users/enresmacmini1/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/Users/enresmacmini1/Library/Application Support/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/Users/enresmacmini1/Code/interQuickstart/app/Http/Kernel.php",
+		"/Users/enresmacmini1/Code/interQuickstart/app/Console/Kernel.php",
+		"/Users/enresmacmini1/Library/Application Support/Sublime Text 3/Packages/phpfmt/phpfmt.sublime-settings",
+		"/Users/enresmacmini1/Code/quickstart/database/migrations/2017_07_24_052232_create_tasks_table.php",
+		"/Users/enresmacmini1/Code/quickstart/resources/views/layouts/app.blade.php",
+		"/Users/enresmacmini1/Code/quickstart/app/Task.php",
+		"/Users/enresmacmini1/Code/quickstart/resources/views/common/errors.blade.php",
+		"/Users/enresmacmini1/Code/quickstart/resources/views/tasks.blade.php",
+		"/Users/enresmacmini1/Library/Application Support/Sublime Text 3/Packages/Package Control/Package Control.sublime-settings",
+		"/Library/WebServer/Documents/quickstart/resources/views/layouts/app.blade.php",
+		"/Library/WebServer/Documents/quickstart/routes/web.php",
+		"/Library/WebServer/Documents/quickstart/.env",
+		"/Library/WebServer/Documents/quickstart/config/database.php",
+		"/Library/WebServer/Documents/quickstart/database/migrations/2017_07_24_035633_create_tasks_table.php"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"window.",
+			"initial",
+			"class",
+			"babel-preset",
+			".jsx",
+			"babel-loader",
+			"vue",
+			"mix.react",
+			"mix.js",
+			"use_tab_s",
+			"yield",
+			"yeild",
+			"auth",
+			"common.errors"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 3,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "resources/views/tasks/index2.blade.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2778,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1134,
+								1134
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Laravel Blade Highlighter/blade.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "resources/assets/js/app.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 711,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								708,
+								708
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "resources/assets/js/components/Example.js",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 4487,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "resources/assets/js/components/ReRoApp.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1865,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								802,
+								802
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 339.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "webpack.mix.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 552,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								493,
+								493
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "resources/views/layouts/app.blade.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3311,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3243,
+								3243
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Laravel Blade Highlighter/blade.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 285.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "app/Http/Controllers/TaskController.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1969,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1178,
+								1178
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 505.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "routes/web.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2074,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2070,
+								2070
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "resources/views/reactRouter.blade.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2812,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1103,
+								1103
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Laravel Blade Highlighter/blade.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 47.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 22.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "interquickstart.sublime-project",
+	"replace":
+	{
+		"height": 40.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"rero",
+				"resources/assets/js/components/ReRoApp.js"
+			],
+			[
+				"web.ph",
+				"routes/web.php"
+			],
+			[
+				"app.blad",
+				"resources/views/layouts/app.blade.php"
+			],
+			[
+				"taskind",
+				"resources/views/tasks/index.blade.php"
+			],
+			[
+				"webpac",
+				"webpack.mix.js"
+			],
+			[
+				"comexam",
+				"resources/assets/js/components/Example.js"
+			],
+			[
+				"web",
+				"routes/web.php"
+			],
+			[
+				"app.blade",
+				"resources/views/layouts/app.blade.php"
+			],
+			[
+				"compoexam",
+				"resources/assets/js/components/Example.js"
+			],
+			[
+				"taskcon",
+				"app/Http/Controllers/TaskController.php"
+			],
+			[
+				"taskinde",
+				"resources/views/tasks/index.blade.php"
+			],
+			[
+				"comexamp",
+				"resources/assets/js/components/Example.js"
+			],
+			[
+				"componeexample.js",
+				"resources/assets/js/components/Example.js"
+			],
+			[
+				"example.js",
+				"node_modules/dns-packet/example.js"
+			],
+			[
+				"app.js",
+				"resources/assets/js/app.js"
+			],
+			[
+				"webpa",
+				"webpack.mix.js"
+			],
+			[
+				"packag",
+				"package.json"
+			],
+			[
+				"view/home",
+				"resources/views/home.blade.php"
+			],
+			[
+				"example.vue",
+				"resources/assets/js/components/Example.vue"
+			],
+			[
+				"webpack.mix.js",
+				"webpack.mix.js"
+			],
+			[
+				"webpack",
+				"webpack.mix.js"
+			],
+			[
+				"assets/app",
+				"resources/assets/js/app.js"
+			],
+			[
+				"webpack.mix",
+				"webpack.mix.js"
+			],
+			[
+				"public/js/app",
+				"public/js/app.js"
+			],
+			[
+				"assets/js/app",
+				"resources/assets/js/app.js"
+			],
+			[
+				"webpack.mix.",
+				"webpack.mix.js"
+			],
+			[
+				"public/js/app.js",
+				"public/js/app.js"
+			],
+			[
+				"authser",
+				"app/Providers/AuthServiceProvider.php"
+			],
+			[
+				"web.php",
+				"routes/web.php"
+			],
+			[
+				"index",
+				"resources/views/tasks/index.blade.php"
+			],
+			[
+				"",
+				"app/Repositories/TaskRepository.php"
+			],
+			[
+				"index.",
+				"resources/views/tasks/index.blade.php"
+			],
+			[
+				"kernel.php",
+				"app/Http/Kernel.php"
+			],
+			[
+				"kernel",
+				"app/Console/Kernel.php"
+			],
+			[
+				"redirect",
+				"app/Http/Middleware/RedirectIfAuthenticated.php"
+			],
+			[
+				"authcontrol",
+				"app/Http/Controllers/Auth/RegisterController.php"
+			],
+			[
+				"authcontroller",
+				"app/Http/Controllers/Auth/LoginController.php"
+			],
+			[
+				"task.",
+				"app/Task.php"
+			],
+			[
+				"user",
+				"app/User.php"
+			],
+			[
+				"task.php",
+				"app/Task.php"
+			],
+			[
+				"app.bl",
+				"resources/views/layouts/app.blade.php"
+			],
+			[
+				"task",
+				"resources/views/tasks.blade.php"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 257.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

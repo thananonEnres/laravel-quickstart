@@ -17125,7 +17125,9 @@ module.exports = EmitterSubscription;
 
 "use strict";
 var ActionTypes = {
-  ADD_TASK: 'ADD_TASK'
+  ADD_TASK: 'ADD_TASK',
+  DELETE_TASK: 'DELETE_TASK',
+  TOGGLE_TASK: 'TOGGLE_TASK'
 };
 
 /* harmony default export */ __webpack_exports__["a"] = (ActionTypes);
@@ -62895,14 +62897,24 @@ NavLink.defaultProps = {
 /* unused harmony default export */ var _unused_webpack_default_export = (__WEBPACK_IMPORTED_MODULE_0__containers_AppContainer__["a" /* default */]);
 
 if (document.getElementById('fluxtask')) {
-    __WEBPACK_IMPORTED_MODULE_2_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_0__containers_AppContainer__["a" /* default */], null), document.getElementById('fluxtask'));
+  __WEBPACK_IMPORTED_MODULE_2_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_0__containers_AppContainer__["a" /* default */], null), document.getElementById('fluxtask'));
 }
 
 // ReactDOM.render(<AppContainer />, document.getElementById('fluxtask'))
 
 
-__WEBPACK_IMPORTED_MODULE_3__data_TaskActions__["a" /* default */].addTask('My first Task');
-__WEBPACK_IMPORTED_MODULE_3__data_TaskActions__["a" /* default */].addTask('My second Task');
+fetch(window.url, {
+  method: 'get',
+  credentials: "same-origin"
+}).then(function (response) {
+  return response.json();
+}).then(function (tasks) {
+  tasks.map(function (tasks) {
+    return __WEBPACK_IMPORTED_MODULE_3__data_TaskActions__["a" /* default */].addTask(tasks.name);
+  });
+  // alert('fetch success');
+  // this.setState({tasks});
+});
 
 /***/ }),
 /* 266 */
@@ -62913,6 +62925,8 @@ __WEBPACK_IMPORTED_MODULE_3__data_TaskActions__["a" /* default */].addTask('My s
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_flux_utils__ = __webpack_require__(103);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_flux_utils___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_flux_utils__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__data_TaskStore__ = __webpack_require__(277);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__data_TaskActions__ = __webpack_require__(282);
+
 
 
 
@@ -62923,7 +62937,10 @@ function getStores() {
 
 function getState() {
   return {
-    Tasks: __WEBPACK_IMPORTED_MODULE_2__data_TaskStore__["a" /* default */].getState()
+    tasks: __WEBPACK_IMPORTED_MODULE_2__data_TaskStore__["a" /* default */].getState(),
+
+    onDeleteTask: __WEBPACK_IMPORTED_MODULE_3__data_TaskActions__["a" /* default */].deleteTask,
+    onToggleTask: __WEBPACK_IMPORTED_MODULE_3__data_TaskActions__["a" /* default */].toggleTask
   };
 }
 
@@ -62936,13 +62953,17 @@ function getState() {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
 
 
 function AppView(props) {
   return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
     "div",
     null,
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Header, props)
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Header, props),
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Main, props),
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Footer, props)
   );
 }
 
@@ -62962,57 +62983,71 @@ function Main(props) {
   if (props.tasks.size === 0) {
     return null;
   }
+  // return <div>it worked, for now</div>
   return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-    "div",
-    null,
-    "it worked, for now"
+    "section",
+    { id: "main", className: "panel panel-default" },
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+      "ul",
+      { id: "todo-list" },
+      [].concat(_toConsumableArray(props.tasks.values())).reverse().map(function (task) {
+        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          "li",
+          { key: task.id },
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            "div",
+            { className: "view" },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", {
+              className: "toggle",
+              type: "checkbox",
+              checked: task.complete,
+              onChange: function onChange() {
+                return props.onToggleTask(task.id);
+              }
+            }),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              "label",
+              null,
+              task.text
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("button", {
+              className: "destroy",
+              onClick: function onClick() {
+                return props.onDeleteTask(task.id);
+              }
+            })
+          )
+        );
+      })
+    )
   );
-  // return (
-  //   <section id="main">
-  //     <ul id="todo-list">
-  //       {[...props.todos.values()].reverse().map(todo => (
-  //         <li key={todo.id}>
-  //           <div className="view">
-  //             <input
-  //               className="toggle"
-  //               type="checkbox"
-  //               checked={todo.complete}
-  //               onChange={
-  //                 // Empty function for now, we will implement this later.
-  //                 () => {}
-  //               }
-  //             />
-  //             <label>{todo.text}</label>
-  //             <button
-  //               className="destroy"
-  //               onClick={
-  //                 // Empty function for now, we will implement this later.
-  //                 () => {}
-  //               }
-  //             />
-  //           </div>
-  //         </li>
-  //       ))}
-  //     </ul>
-  //   </section>
-  // );
 }
 
-// function Footer(props) {
-//   if (props.todos.size === 0) {
-//     return null;
-//   }
-//   return (
-//     <footer id="footer">
-//       <span id="todo-count">
-//         <strong>
-//           {props.todos.size}
-//         </strong>
-//         {' items left'}
-//       </span>
-//     </footer>
-//   );
-// }
+function Footer(props) {
+  if (props.tasks.size === 0) {
+    return null;
+  }
+
+  var remaining = props.tasks.filter(function (task) {
+    return !task.complete;
+  }).size;
+  var phrase = remaining === 1 ? ' item left' : ' items left';
+
+  return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+    "footer",
+    { id: "footer" },
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+      "span",
+      { id: "todo-count" },
+      __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        "strong",
+        null,
+        remaining
+      ),
+      phrase
+    )
+  );
+}
 
 /* harmony default export */ __webpack_exports__["a"] = (AppView);
 
@@ -64116,32 +64151,13 @@ var TaskStore = function (_ReduceStore) {
   function TaskStore() {
     _classCallCheck(this, TaskStore);
 
-    var _this = _possibleConstructorReturn(this, (TaskStore.__proto__ || Object.getPrototypeOf(TaskStore)).call(this, __WEBPACK_IMPORTED_MODULE_3__TaskDispatcher__["a" /* default */]));
-
-    _this.state = {
-      tasks: []
-    };
-    return _this;
+    return _possibleConstructorReturn(this, (TaskStore.__proto__ || Object.getPrototypeOf(TaskStore)).call(this, __WEBPACK_IMPORTED_MODULE_3__TaskDispatcher__["a" /* default */]));
   }
 
   _createClass(TaskStore, [{
     key: 'getInitialState',
     value: function getInitialState() {
       return __WEBPACK_IMPORTED_MODULE_0_immutable___default.a.OrderedMap();
-    }
-  }, {
-    key: 'componentDidMount',
-    value: function componentDidMount() {
-      var _this2 = this;
-
-      fetch(window.url, {
-        method: 'get',
-        credentials: "same-origin"
-      }).then(function (response) {
-        return response.json();
-      }).then(function (tasks) {
-        _this2.setState({ tasks: tasks });
-      });
     }
   }, {
     key: 'reduce',
@@ -64158,6 +64174,14 @@ var TaskStore = function (_ReduceStore) {
             text: action.text,
             complete: false
           }));
+
+        case __WEBPACK_IMPORTED_MODULE_2__TaskActionTypes__["a" /* default */].DELETE_TASK:
+          return state.delete(action.id);
+
+        case __WEBPACK_IMPORTED_MODULE_2__TaskActionTypes__["a" /* default */].TOGGLE_TASK:
+          return state.update(action.id, function (task) {
+            return task.set('complete', !task.complete);
+          });
 
         default:
           return state;
@@ -64484,6 +64508,18 @@ var Actions = {
     __WEBPACK_IMPORTED_MODULE_1__TaskDispatcher__["a" /* default */].dispatch({
       type: __WEBPACK_IMPORTED_MODULE_0__TaskActionTypes__["a" /* default */].ADD_TASK,
       text: text
+    });
+  },
+  deleteTask: function deleteTask(id) {
+    __WEBPACK_IMPORTED_MODULE_1__TaskDispatcher__["a" /* default */].dispatch({
+      type: __WEBPACK_IMPORTED_MODULE_0__TaskActionTypes__["a" /* default */].DELETE_TASK,
+      id: id
+    });
+  },
+  toggleTask: function toggleTask(id) {
+    __WEBPACK_IMPORTED_MODULE_1__TaskDispatcher__["a" /* default */].dispatch({
+      type: __WEBPACK_IMPORTED_MODULE_0__TaskActionTypes__["a" /* default */].TOGGLE_TASK,
+      id: id
     });
   }
 };
