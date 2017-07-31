@@ -17127,7 +17127,9 @@ module.exports = EmitterSubscription;
 var ActionTypes = {
   ADD_TASK: 'ADD_TASK',
   DELETE_TASK: 'DELETE_TASK',
-  TOGGLE_TASK: 'TOGGLE_TASK'
+  TOGGLE_TASK: 'TOGGLE_TASK',
+  UPDATE_DAFT: 'UPDATE_DAFT',
+  FETCH_TASK_FINISH: 'FETCH_TASK_FINISH'
 };
 
 /* harmony default export */ __webpack_exports__["a"] = (ActionTypes);
@@ -62953,29 +62955,41 @@ function getState() {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__data_TaskActions__ = __webpack_require__(282);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+
 
 
 
 function AppView(props) {
   return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-    "div",
+    'div',
     null,
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Header, props),
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Main, props),
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(NewMain, props),
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Footer, props)
   );
 }
 
 function Header(props) {
   return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-    "header",
-    { id: "header" },
+    'header',
+    { id: 'header' },
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-      "h1",
+      'h1',
       null,
-      "Tasks"
-    )
+      'Tasks'
+    ),
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(NewTask, null)
   );
 }
 
@@ -62985,33 +62999,33 @@ function Main(props) {
   }
   // return <div>it worked, for now</div>
   return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-    "section",
-    { id: "main", className: "panel panel-default" },
+    'section',
+    { id: 'main', className: 'panel panel-default' },
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-      "ul",
-      { id: "todo-list" },
+      'ul',
+      { id: 'todo-list' },
       [].concat(_toConsumableArray(props.tasks.values())).reverse().map(function (task) {
         return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          "li",
+          'li',
           { key: task.id },
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            "div",
-            { className: "view" },
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("input", {
-              className: "toggle",
-              type: "checkbox",
+            'div',
+            { className: 'view' },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
+              className: 'toggle',
+              type: 'checkbox',
               checked: task.complete,
               onChange: function onChange() {
                 return props.onToggleTask(task.id);
               }
             }),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-              "label",
+              'label',
               null,
               task.text
             ),
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("button", {
-              className: "destroy",
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('button', {
+              className: 'destroy',
               onClick: function onClick() {
                 return props.onDeleteTask(task.id);
               }
@@ -63022,6 +63036,95 @@ function Main(props) {
     )
   );
 }
+
+var NewMain = function (_Component) {
+  _inherits(NewMain, _Component);
+
+  function NewMain() {
+    _classCallCheck(this, NewMain);
+
+    return _possibleConstructorReturn(this, (NewMain.__proto__ || Object.getPrototypeOf(NewMain)).apply(this, arguments));
+  }
+
+  _createClass(NewMain, [{
+    key: 'componentDidMount',
+
+
+    // componentDidMount() {
+    //   console.log('did mount');
+    // }
+
+    value: function componentDidMount() {
+      console.log('did mount');
+      fetch(window.url, {
+        method: 'get',
+        credentials: "same-origin"
+      }).then(function (response) {
+        return response.json();
+      }).then(function (tasks) {
+        // alert(tasks);
+        __WEBPACK_IMPORTED_MODULE_1__data_TaskActions__["a" /* default */].fetchTasks(tasks);
+        // this.setState({tasks});
+      });
+    }
+  }, {
+    key: 'componentDidUpdate',
+    value: function componentDidUpdate() {
+      console.log('did update');
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var props = this.props;
+      if (props.tasks.length == 0) {
+        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'div',
+          null,
+          'Loading...'
+        );
+      }
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'section',
+        { id: 'main', className: 'panel panel-default' },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'ul',
+          { id: 'todo-list' },
+          [].concat(_toConsumableArray(props.tasks.values())).reverse().map(function (task) {
+            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'li',
+              { key: task.id },
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'div',
+                { className: 'view' },
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
+                  className: 'toggle',
+                  type: 'checkbox',
+                  checked: task.complete,
+                  onChange: function onChange() {
+                    return props.onToggleTask(task.id);
+                  }
+                }),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                  'label',
+                  null,
+                  task.text
+                ),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('button', {
+                  className: 'destroy',
+                  onClick: function onClick() {
+                    return props.onDeleteTask(task.id);
+                  }
+                })
+              )
+            );
+          })
+        )
+      );
+    }
+  }]);
+
+  return NewMain;
+}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
 
 function Footer(props) {
   if (props.tasks.size === 0) {
@@ -63034,13 +63137,13 @@ function Footer(props) {
   var phrase = remaining === 1 ? ' item left' : ' items left';
 
   return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-    "footer",
-    { id: "footer" },
+    'footer',
+    { id: 'footer' },
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-      "span",
-      { id: "todo-count" },
+      'span',
+      { id: 'todo-count' },
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        "strong",
+        'strong',
         null,
         remaining
       ),
@@ -63049,6 +63152,9 @@ function Footer(props) {
   );
 }
 
+function NewTask(props) {
+  return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'text', values: 'place holder' });
+}
 /* harmony default export */ __webpack_exports__["a"] = (AppView);
 
 /***/ }),
@@ -64183,6 +64289,24 @@ var TaskStore = function (_ReduceStore) {
             return task.set('complete', !task.complete);
           });
 
+        case __WEBPACK_IMPORTED_MODULE_2__TaskActionTypes__["a" /* default */].FETCH_TASK_FINISH:
+          var tasks = action.tasks;
+          // tasks.map((task) => (console.log(task.id + task.name)));
+          tasks.map(function (task) {
+            console.log(task);
+            state.set(id, new __WEBPACK_IMPORTED_MODULE_5__Task__["a" /* default */]({
+              id: id,
+              text: task.name,
+              complete: false
+            }));
+          });
+          // alert(tasks);
+          // console.log(tasks);
+          // tasks.map(alert);
+          // alert(action);
+          // console.log('Hello');
+          return state;
+
         default:
           return state;
       }
@@ -64521,6 +64645,26 @@ var Actions = {
       type: __WEBPACK_IMPORTED_MODULE_0__TaskActionTypes__["a" /* default */].TOGGLE_TASK,
       id: id
     });
+  },
+  fetchTasks: function fetchTasks(tasks) {
+    // get task from api call
+    // $.get(....., function() {
+    //   TaskDispatcher.dispatch({
+    //     type: TaskActionTypes.FETCH_TASKS_FINISH,
+    //     response.data
+    //   });
+    // });
+
+    // alert('TaskAction.fetchTasks');
+    // alert(tasks);
+    __WEBPACK_IMPORTED_MODULE_1__TaskDispatcher__["a" /* default */].dispatch({
+      type: __WEBPACK_IMPORTED_MODULE_0__TaskActionTypes__["a" /* default */].FETCH_TASK_FINISH,
+      tasks: tasks
+    });
+    // TaskDispatcher.dispatch({
+    //   type: TaskActionTypes.FETCH_TASKS_FINISH,
+
+    // });
   }
 };
 

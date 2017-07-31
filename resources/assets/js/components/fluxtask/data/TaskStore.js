@@ -37,6 +37,24 @@ class TaskStore extends ReduceStore {
           task => task.set('complete', !task.complete),
         );
 
+      case TaskActionTypes.FETCH_TASK_FINISH:
+        var tasks = action.tasks;
+        // tasks.map((task) => (console.log(task.id + task.name)));
+        tasks.map((task) =>{
+          console.log(task);
+          state.set(id, new Task({
+            id,
+            text: task.name,
+            complete: false,
+          }));
+        });
+        // alert(tasks);
+        // console.log(tasks);
+        // tasks.map(alert);
+        // alert(action);
+        // console.log('Hello');
+        return state;
+
       default:
         return state;
     }
