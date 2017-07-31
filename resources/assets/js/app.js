@@ -22,3 +22,5 @@ require('./bootstrap');
 // });
 
 import Example from './components/Example';
+import ReRoApp from './components/ReRoApp';
+import AppContainer from './components/fluxtask/root.js';

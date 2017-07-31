@@ -138,6 +138,15 @@ class ApiTaskList extends Component {
     }
   }
 
+  renderRow(task) {
+    return (
+      <tr>
+        <TaskRow taskName={task.name}/>
+        <DelBut taskId={task.id}/>
+      </tr>
+    );
+  }
+
   componentDidMount() {
     fetch(window.url,{
       method: 'get',
@@ -152,7 +161,25 @@ class ApiTaskList extends Component {
   }
 
   render() {
-    return (<p>hello</p>);
+    // return (<p>hello</p>);
+    return (
+      <div className="panel panel-default">
+        <div className="panel-heading">
+          Current Tasks
+        </div>
+        <div className="panel-body">
+          <table className="table table-striped task-table">
+            <thead>
+              <th>Task</th>
+              <th>&nbsp;</th>
+            </thead>
+            <tbody>
+              {this.state.tasks.map(this.renderRow)}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    );
   }
 }
 
