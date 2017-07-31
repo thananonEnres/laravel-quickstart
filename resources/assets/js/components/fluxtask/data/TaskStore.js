@@ -2,6 +2,8 @@ import Immutable from 'immutable';
 import {ReduceStore} from 'flux/utils';
 import TaskActionTypes from './TaskActionTypes';
 import TaskDispatcher from './TaskDispatcher';
+import Counter from './Counter';
+import Task from './Task'
 
 class TaskStore extends ReduceStore {
   constructor() {
@@ -32,7 +34,16 @@ class TaskStore extends ReduceStore {
   reduce(state, action) {
     switch (action.type) {
       case TaskActionTypes.ADD_TASK:
-        return state;
+        // Don't add todos with no text.
+        if (!action.text) {
+          return state;
+        }
+        const id = Counter.increment();
+        return state.set(id, new Todo({
+          id,
+          text: action.text,
+          complete: false,
+        }));
 
       default:
         return state;
