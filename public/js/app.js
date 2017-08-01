@@ -7614,6 +7614,12 @@ var Actions = {
       text: text
     });
   },
+  initTask: function initTask(text) {
+    __WEBPACK_IMPORTED_MODULE_1__TaskDispatcher__["a" /* default */].dispatch({
+      type: __WEBPACK_IMPORTED_MODULE_0__TaskActionTypes__["a" /* default */].INIT_TASK,
+      text: text
+    });
+  },
   deleteTask: function deleteTask(id) {
     __WEBPACK_IMPORTED_MODULE_1__TaskDispatcher__["a" /* default */].dispatch({
       type: __WEBPACK_IMPORTED_MODULE_0__TaskActionTypes__["a" /* default */].DELETE_TASK,
@@ -11933,6 +11939,7 @@ Link.contextTypes = {
 "use strict";
 var ActionTypes = {
   ADD_TASK: 'ADD_TASK',
+  INIT_TASK: 'INIT_TASK',
   DELETE_TASK: 'DELETE_TASK',
   TOGGLE_TASK: 'TOGGLE_TASK',
   UPDATE_DRAFT: 'UPDATE_DRAFT',
@@ -63128,7 +63135,7 @@ var NewMain = function (_Component) {
       }).then(function (tasks) {
         // alert(tasks);
         tasks.map(function (tasks) {
-          return __WEBPACK_IMPORTED_MODULE_1__data_TaskActions__["a" /* default */].addTask(tasks.name);
+          return __WEBPACK_IMPORTED_MODULE_1__data_TaskActions__["a" /* default */].initTask(tasks.name);
         });
         // TaskActions.fetchTasks(tasks);
         // this.setState({tasks});
@@ -63218,6 +63225,26 @@ function Footer(props) {
     )
   );
 }
+
+var CsrfInput = function (_Component2) {
+  _inherits(CsrfInput, _Component2);
+
+  function CsrfInput() {
+    _classCallCheck(this, CsrfInput);
+
+    return _possibleConstructorReturn(this, (CsrfInput.__proto__ || Object.getPrototypeOf(CsrfInput)).apply(this, arguments));
+  }
+
+  _createClass(CsrfInput, [{
+    key: 'render',
+    value: function render() {
+      var oooh = document.getElementsByName('csrf-token')[0].content;
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'hidden', name: '_token', value: oooh });
+    }
+  }]);
+
+  return CsrfInput;
+}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
 
 var ENTER_KEY_CODE = 13;
 function NewTask(props) {
@@ -64611,13 +64638,23 @@ var TaskStore = function (_ReduceStore) {
   }, {
     key: 'reduce',
     value: function reduce(state, action) {
+      var id = __WEBPACK_IMPORTED_MODULE_4__Counter__["a" /* default */].increment();
       switch (action.type) {
         case __WEBPACK_IMPORTED_MODULE_2__TaskActionTypes__["a" /* default */].ADD_TASK:
           // Don't add todos with no text.
           if (!action.text) {
             return state;
           }
-          var id = __WEBPACK_IMPORTED_MODULE_4__Counter__["a" /* default */].increment();
+          return state.set(id, new __WEBPACK_IMPORTED_MODULE_5__Task__["a" /* default */]({
+            id: id,
+            text: action.text,
+            complete: false
+          }));
+
+        case __WEBPACK_IMPORTED_MODULE_2__TaskActionTypes__["a" /* default */].INIT_TASK:
+          if (!action.text) {
+            return state;
+          }
           return state.set(id, new __WEBPACK_IMPORTED_MODULE_5__Task__["a" /* default */]({
             id: id,
             text: action.text,

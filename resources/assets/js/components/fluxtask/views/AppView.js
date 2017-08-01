@@ -68,7 +68,7 @@ class NewMain extends Component {
       })
       .then(tasks => {
         // alert(tasks);
-        tasks.map(tasks => (TaskActions.addTask(tasks.name)));
+        tasks.map(tasks => (TaskActions.initTask(tasks.name)));
         // TaskActions.fetchTasks(tasks);
         // this.setState({tasks});
       });
@@ -127,6 +127,16 @@ function Footer(props) {
       </span>
     </footer>
   );
+}
+
+class CsrfInput extends Component {
+  render () {
+    var oooh = document.getElementsByName('csrf-token')[0].content;
+    return (
+      <input type="hidden" name="_token" value={oooh}>
+      </input>
+    )
+  }
 }
 
 const ENTER_KEY_CODE = 13;

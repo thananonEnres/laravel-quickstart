@@ -9,6 +9,13 @@ const Actions = {
     });
   },
 
+  initTask(text) {
+    TaskDispatcher.dispatch({
+      type: TaskActionTypes.INIT_TASK,
+      text,
+    });
+  },
+
   deleteTask(id){
     TaskDispatcher.dispatch({
       type: TaskActionTypes.DELETE_TASK,

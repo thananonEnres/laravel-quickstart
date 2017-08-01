@@ -15,13 +15,23 @@ class TaskStore extends ReduceStore {
   }
   
   reduce(state, action) {
+    const id = Counter.increment();
     switch (action.type) {
       case TaskActionTypes.ADD_TASK:
         // Don't add todos with no text.
         if (!action.text) {
           return state;
         }
-        const id = Counter.increment();
+        return state.set(id, new Task({
+          id,
+          text: action.text,
+          complete: false,
+        }));
+
+      case TaskActionTypes.INIT_TASK:
+        if (!action.text) {
+          return state;
+        }
         return state.set(id, new Task({
           id,
           text: action.text,
