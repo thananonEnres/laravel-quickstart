@@ -42,6 +42,13 @@ const Actions = {
     //   type: TaskActionTypes.FETCH_TASKS_FINISH,
 
     // });
+  },
+
+  updateDraft(text) {
+    TaskDispatcher.dispatch({
+      type: TaskActionTypes.UPDATE_DRAFT,
+      text,
+    })
   }
 };
 

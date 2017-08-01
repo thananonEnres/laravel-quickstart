@@ -16,7 +16,7 @@ function Header(props) {
   return (
     <header id="header">
       <h1>Tasks</h1>
-      <NewTask />
+      <NewTask {...props}/>
     </header>
   );
 }
@@ -129,9 +129,26 @@ function Footer(props) {
   );
 }
 
+const ENTER_KEY_CODE = 13;
 function NewTask(props) {
+  const addTask = () => props.onAdd(props.draft);
+  const onBlur = () => addTask();
+  const onChange = (event) => props.onUpdateDraft(event.target.value);
+  const onKeyDown = (event) => {
+    if (event.keyCode === ENTER_KEY_CODE) {
+      addTask();
+    }
+  }
   return (
-    <input type="text" values="place holder"></input>
+    <input
+      autoFocus={true}
+      id="new-todo"
+      placeholder="What needs to be done?"
+      value={props.draft}
+      onBlur={onBlur}
+      onChange={onChange}
+      onKeyDown={onKeyDown}
+    />
   );
 }
 export default AppView;

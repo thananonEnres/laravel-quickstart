@@ -7645,6 +7645,12 @@ var Actions = {
     //   type: TaskActionTypes.FETCH_TASKS_FINISH,
 
     // });
+  },
+  updateDraft: function updateDraft(text) {
+    __WEBPACK_IMPORTED_MODULE_1__TaskDispatcher__["a" /* default */].dispatch({
+      type: __WEBPACK_IMPORTED_MODULE_0__TaskActionTypes__["a" /* default */].UPDATE_DRAFT,
+      text: text
+    });
   }
 };
 
@@ -11929,7 +11935,7 @@ var ActionTypes = {
   ADD_TASK: 'ADD_TASK',
   DELETE_TASK: 'DELETE_TASK',
   TOGGLE_TASK: 'TOGGLE_TASK',
-  UPDATE_DAFT: 'UPDATE_DAFT',
+  UPDATE_DRAFT: 'UPDATE_DRAFT',
   FETCH_TASK_FINISH: 'FETCH_TASK_FINISH'
 };
 
@@ -62981,21 +62987,26 @@ if (document.getElementById('fluxtask')) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_flux_utils___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_flux_utils__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__data_TaskStore__ = __webpack_require__(280);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__data_TaskActions__ = __webpack_require__(62);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__data_TaskDraftStore__ = __webpack_require__(293);
+
 
 
 
 
 
 function getStores() {
-  return [__WEBPACK_IMPORTED_MODULE_2__data_TaskStore__["a" /* default */]];
+  return [__WEBPACK_IMPORTED_MODULE_4__data_TaskDraftStore__["a" /* default */], __WEBPACK_IMPORTED_MODULE_2__data_TaskStore__["a" /* default */]];
 }
 
 function getState() {
   return {
+    draft: __WEBPACK_IMPORTED_MODULE_4__data_TaskDraftStore__["a" /* default */].getState(),
     tasks: __WEBPACK_IMPORTED_MODULE_2__data_TaskStore__["a" /* default */].getState(),
 
     onDeleteTask: __WEBPACK_IMPORTED_MODULE_3__data_TaskActions__["a" /* default */].deleteTask,
-    onToggleTask: __WEBPACK_IMPORTED_MODULE_3__data_TaskActions__["a" /* default */].toggleTask
+    onToggleTask: __WEBPACK_IMPORTED_MODULE_3__data_TaskActions__["a" /* default */].toggleTask,
+    onAdd: __WEBPACK_IMPORTED_MODULE_3__data_TaskActions__["a" /* default */].addTask,
+    onUpdateDraft: __WEBPACK_IMPORTED_MODULE_3__data_TaskActions__["a" /* default */].updateDraft
   };
 }
 
@@ -63042,7 +63053,7 @@ function Header(props) {
       null,
       'Tasks'
     ),
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(NewTask, null)
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(NewTask, props)
   );
 }
 
@@ -63208,8 +63219,31 @@ function Footer(props) {
   );
 }
 
+var ENTER_KEY_CODE = 13;
 function NewTask(props) {
-  return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'text', values: 'place holder' });
+  var addTask = function addTask() {
+    return props.onAdd(props.draft);
+  };
+  var onBlur = function onBlur() {
+    return addTask();
+  };
+  var onChange = function onChange(event) {
+    return props.onUpdateDraft(event.target.value);
+  };
+  var onKeyDown = function onKeyDown(event) {
+    if (event.keyCode === ENTER_KEY_CODE) {
+      addTask();
+    }
+  };
+  return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', {
+    autoFocus: true,
+    id: 'new-todo',
+    placeholder: 'What needs to be done?',
+    value: props.draft,
+    onBlur: onBlur,
+    onChange: onChange,
+    onKeyDown: onKeyDown
+  });
 }
 /* harmony default export */ __webpack_exports__["a"] = (AppView);
 
@@ -64678,6 +64712,73 @@ var Task = __WEBPACK_IMPORTED_MODULE_0_immutable___default.a.Record({
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 284 */,
+/* 285 */,
+/* 286 */,
+/* 287 */,
+/* 288 */,
+/* 289 */,
+/* 290 */,
+/* 291 */,
+/* 292 */,
+/* 293 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__TaskActionTypes__ = __webpack_require__(104);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__TaskDispatcher__ = __webpack_require__(105);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_flux_utils__ = __webpack_require__(106);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_flux_utils___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_flux_utils__);
+
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+
+var TaskDraftStore = function (_ReduceStore) {
+  _inherits(TaskDraftStore, _ReduceStore);
+
+  function TaskDraftStore() {
+    _classCallCheck(this, TaskDraftStore);
+
+    return _possibleConstructorReturn(this, (TaskDraftStore.__proto__ || Object.getPrototypeOf(TaskDraftStore)).call(this, __WEBPACK_IMPORTED_MODULE_1__TaskDispatcher__["a" /* default */]));
+  }
+
+  _createClass(TaskDraftStore, [{
+    key: 'getInitialState',
+    value: function getInitialState() {
+      return '';
+    }
+  }, {
+    key: 'reduce',
+    value: function reduce(state, action) {
+      switch (action.type) {
+        case __WEBPACK_IMPORTED_MODULE_0__TaskActionTypes__["a" /* default */].ADD_TASK:
+          return '';
+
+        case __WEBPACK_IMPORTED_MODULE_0__TaskActionTypes__["a" /* default */].UPDATE_DRAFT:
+          return action.text;
+
+        default:
+          return state;
+      }
+    }
+  }]);
+
+  return TaskDraftStore;
+}(__WEBPACK_IMPORTED_MODULE_2_flux_utils__["ReduceStore"]);
+
+/* harmony default export */ __webpack_exports__["a"] = (new TaskDraftStore());
 
 /***/ })
 /******/ ]);
