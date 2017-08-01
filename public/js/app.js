@@ -17230,6 +17230,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Example__ = __webpack_require__(138);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_ReRoApp__ = __webpack_require__(238);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_fluxtask_root_js__ = __webpack_require__(266);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_shorttxt_Shortentxt__ = __webpack_require__(297);
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -17252,6 +17253,7 @@ __webpack_require__(113);
 // const app = new Vue({
 //     el: '#app'
 // });
+
 
 
 
@@ -64838,6 +64840,269 @@ var TaskDraftStore = function (_ReduceStore) {
 }(__WEBPACK_IMPORTED_MODULE_2_flux_utils__["ReduceStore"]);
 
 /* harmony default export */ __webpack_exports__["a"] = (new TaskDraftStore());
+
+/***/ }),
+/* 294 */,
+/* 295 */,
+/* 296 */,
+/* 297 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_dom__);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+var ShortenTx = function (_Component) {
+  _inherits(ShortenTx, _Component);
+
+  function ShortenTx(props) {
+    _classCallCheck(this, ShortenTx);
+
+    var _this = _possibleConstructorReturn(this, (ShortenTx.__proto__ || Object.getPrototypeOf(ShortenTx)).call(this, props));
+
+    _this.state = {
+      isToggleOn: true,
+      more: true,
+      txt: '',
+      txtLength: 50
+    };
+
+    _this.handleClick = _this.handleClick.bind(_this);
+    return _this;
+  }
+
+  _createClass(ShortenTx, [{
+    key: 'handleClick',
+    value: function handleClick() {
+      console.log('hello');
+      this.setState(function (prevState) {
+        return {
+          isToggleOn: !prevState.isToggleOn,
+          more: !prevState.more
+        };
+      });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var showLgth = this.state.txtLength;
+      var children = this.props.children;
+      var showStr = '';
+      var moretext = 'more';
+
+      if (this.state.more === true) {
+        moretext = 'more';
+        showStr = children.slice(0, showLgth) + '.....';
+      } else {
+        moretext = 'less';
+        showStr = children;
+      }
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'div',
+        null,
+        showStr,
+        ' ',
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'a',
+          { href: '#', onClick: this.handleClick },
+          moretext
+        )
+      );
+    }
+  }]);
+
+  return ShortenTx;
+}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
+
+/* unused harmony default export */ var _unused_webpack_default_export = (ShortenTx);
+
+var FormComponent = function (_Component2) {
+  _inherits(FormComponent, _Component2);
+
+  function FormComponent(props) {
+    _classCallCheck(this, FormComponent);
+
+    var _this2 = _possibleConstructorReturn(this, (FormComponent.__proto__ || Object.getPrototypeOf(FormComponent)).call(this, props));
+
+    _this2.state = {
+      name: '',
+      gender: '',
+      img: ''
+    };
+
+    _this2.handleChange = _this2.handleChange.bind(_this2);
+    _this2.handleClick = _this2.handleClick.bind(_this2);
+    _this2.handleSelect = _this2.handleSelect.bind(_this2);
+    return _this2;
+  }
+
+  _createClass(FormComponent, [{
+    key: 'handleChange',
+    value: function handleChange(event) {
+      console.log('name change');
+      this.setState({
+        name: event.target.value
+      });
+    }
+  }, {
+    key: 'handleSelect',
+    value: function handleSelect(event) {
+      console.log('select gender');
+      var imgTmp = '';
+      if (event.target.value === 'male') {
+        imgTmp = 'https://openclipart.org/image/300px/svg_to_png/15036/nicubunu-Stick-figure-male.png&disposition=attachment';
+      } else {
+        imgTmp = 'https://openclipart.org/image/300px/svg_to_png/15040/nicubunu-Stick-figure-female.png&disposition=attachment';
+      }
+      this.setState({
+        gender: event.target.value,
+        img: imgTmp
+      });
+    }
+  }, {
+    key: 'handleClick',
+    value: function handleClick(event) {
+      event.preventDefault();
+      if (this.state.name !== '' && this.state.gender !== '') {
+        alert('name: ' + this.state.name + '\ngender: ' + this.state.gender);
+      } else {
+        alert('please enter all information');
+      }
+      // console.log('hey');
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'div',
+        null,
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'form',
+          null,
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(NameInput, { value: this.state.name, onChange: this.handleChange }),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(GenderChoice, { onSelect: this.handleSelect, gender: this.state.gender }),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(PictureShow, { imgSrc: this.state.img }),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(SubmitButton, { onClick: this.handleClick })
+        )
+      );
+    }
+  }]);
+
+  return FormComponent;
+}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
+
+var NameInput = function (_Component3) {
+  _inherits(NameInput, _Component3);
+
+  function NameInput() {
+    _classCallCheck(this, NameInput);
+
+    return _possibleConstructorReturn(this, (NameInput.__proto__ || Object.getPrototypeOf(NameInput)).apply(this, arguments));
+  }
+
+  _createClass(NameInput, [{
+    key: 'render',
+    value: function render() {
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'div',
+        null,
+        'Name\xA0',
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { autoFocus: 'true', type: 'text', placeholder: 'Your name', value: this.props.value, onChange: this.props.onChange }),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null)
+      );
+    }
+  }]);
+
+  return NameInput;
+}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
+
+var GenderChoice = function (_Component4) {
+  _inherits(GenderChoice, _Component4);
+
+  function GenderChoice() {
+    _classCallCheck(this, GenderChoice);
+
+    return _possibleConstructorReturn(this, (GenderChoice.__proto__ || Object.getPrototypeOf(GenderChoice)).apply(this, arguments));
+  }
+
+  _createClass(GenderChoice, [{
+    key: 'render',
+    value: function render() {
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'div',
+        null,
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'radio', name: 'gender', value: 'male', onClick: this.props.onSelect }),
+        '\xA0Male\xA0',
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'radio', name: 'gender', value: 'female', onClick: this.props.onSelect }),
+        '\xA0Female\xA0',
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null)
+      );
+    }
+  }]);
+
+  return GenderChoice;
+}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
+
+var PictureShow = function (_Component5) {
+  _inherits(PictureShow, _Component5);
+
+  function PictureShow() {
+    _classCallCheck(this, PictureShow);
+
+    return _possibleConstructorReturn(this, (PictureShow.__proto__ || Object.getPrototypeOf(PictureShow)).apply(this, arguments));
+  }
+
+  _createClass(PictureShow, [{
+    key: 'render',
+    value: function render() {
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: this.props.imgSrc });
+    }
+  }]);
+
+  return PictureShow;
+}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
+
+var SubmitButton = function (_Component6) {
+  _inherits(SubmitButton, _Component6);
+
+  function SubmitButton() {
+    _classCallCheck(this, SubmitButton);
+
+    return _possibleConstructorReturn(this, (SubmitButton.__proto__ || Object.getPrototypeOf(SubmitButton)).apply(this, arguments));
+  }
+
+  _createClass(SubmitButton, [{
+    key: 'render',
+    value: function render() {
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'button',
+        { type: 'submit', onClick: this.props.onClick },
+        'Submit'
+      );
+    }
+  }]);
+
+  return SubmitButton;
+}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
+
+if (document.getElementById('shortTxt')) {
+  var info = 'When using React you should generally not need to call addEventListener to add listeners to a DOM element after it is created. Instead, just provide a listener when the element is initially rendered.When you define a component using an ES6 class, a common pattern is for an event handler to be a method on the class. For example, this Toggle component renders a button that lets the user toggle between "ON" and "OFF" states:';
+  // ReactDOM.render(<ShortenTx>{info}</ShortenTx>, document.getElementById('shortTxt'));
+  __WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(FormComponent, null), document.getElementById('shortTxt'));
+}
 
 /***/ })
 /******/ ]);

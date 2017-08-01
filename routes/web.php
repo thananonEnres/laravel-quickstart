@@ -37,3 +37,6 @@ Route::get('/reactrouter', function(){
 });
 
 Route::get('/fluxtask', 'TaskController@index3');
+Route::get('/shorttxt', function() {
+  return view('shortTxt');
+});
