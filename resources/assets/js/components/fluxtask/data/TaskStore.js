@@ -34,7 +34,6 @@ class TaskStore extends ReduceStore {
         })
         .then(response => {
           console.log('post task');
-          return response.json();
         })
 
       case TaskActionTypes.INIT_TASK:
@@ -45,9 +44,22 @@ class TaskStore extends ReduceStore {
           id,
           text: action.text,
           complete: false,
+          servId: action.servId,
         }));
 
       case TaskActionTypes.DELETE_TASK:
+        var oooh = document.getElementsByName('csrf-token')[0].content;
+        var formData = new FormData();
+        formData.append('_token', oooh);
+        formData.append('_method', 'DELETE');
+        fetch(window.urlPost + '/' + action.servId,{
+          method: 'POST',
+          credentials: "same-origin",
+          body: formData,
+        })
+        .then(response => {
+          console.log('delete task');
+        })
         return state.delete(action.id);
 
       case TaskActionTypes.TOGGLE_TASK:

@@ -9,17 +9,19 @@ const Actions = {
     });
   },
 
-  initTask(text) {
+  initTask(text, servId) {
     TaskDispatcher.dispatch({
       type: TaskActionTypes.INIT_TASK,
       text,
+      servId,
     });
   },
 
-  deleteTask(id){
+  deleteTask(id, servId){
     TaskDispatcher.dispatch({
       type: TaskActionTypes.DELETE_TASK,
       id,
+      servId,
     });
   },
 

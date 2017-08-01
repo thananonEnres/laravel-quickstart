@@ -7614,16 +7614,18 @@ var Actions = {
       text: text
     });
   },
-  initTask: function initTask(text) {
+  initTask: function initTask(text, servId) {
     __WEBPACK_IMPORTED_MODULE_1__TaskDispatcher__["a" /* default */].dispatch({
       type: __WEBPACK_IMPORTED_MODULE_0__TaskActionTypes__["a" /* default */].INIT_TASK,
-      text: text
+      text: text,
+      servId: servId
     });
   },
-  deleteTask: function deleteTask(id) {
+  deleteTask: function deleteTask(id, servId) {
     __WEBPACK_IMPORTED_MODULE_1__TaskDispatcher__["a" /* default */].dispatch({
       type: __WEBPACK_IMPORTED_MODULE_0__TaskActionTypes__["a" /* default */].DELETE_TASK,
-      id: id
+      id: id,
+      servId: servId
     });
   },
   toggleTask: function toggleTask(id) {
@@ -63134,8 +63136,8 @@ var NewMain = function (_Component) {
         return response.json();
       }).then(function (tasks) {
         // alert(tasks);
-        tasks.map(function (tasks) {
-          return __WEBPACK_IMPORTED_MODULE_1__data_TaskActions__["a" /* default */].initTask(tasks.name);
+        tasks.map(function (task) {
+          return __WEBPACK_IMPORTED_MODULE_1__data_TaskActions__["a" /* default */].initTask(task.name, task.id);
         });
         // TaskActions.fetchTasks(tasks);
         // this.setState({tasks});
@@ -63186,7 +63188,7 @@ var NewMain = function (_Component) {
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('button', {
                   className: 'destroy',
                   onClick: function onClick() {
-                    return props.onDeleteTask(task.id);
+                    return props.onDeleteTask(task.id, task.servId);
                   }
                 })
               )
@@ -64656,7 +64658,6 @@ var TaskStore = function (_ReduceStore) {
             body: formData
           }).then(function (response) {
             console.log('post task');
-            return response.json();
           });
 
         case __WEBPACK_IMPORTED_MODULE_2__TaskActionTypes__["a" /* default */].INIT_TASK:
@@ -64666,10 +64667,22 @@ var TaskStore = function (_ReduceStore) {
           return state.set(id, new __WEBPACK_IMPORTED_MODULE_5__Task__["a" /* default */]({
             id: id,
             text: action.text,
-            complete: false
+            complete: false,
+            servId: action.servId
           }));
 
         case __WEBPACK_IMPORTED_MODULE_2__TaskActionTypes__["a" /* default */].DELETE_TASK:
+          var oooh = document.getElementsByName('csrf-token')[0].content;
+          var formData = new FormData();
+          formData.append('_token', oooh);
+          formData.append('_method', 'DELETE');
+          fetch(window.urlPost + '/' + action.servId, {
+            method: 'POST',
+            credentials: "same-origin",
+            body: formData
+          }).then(function (response) {
+            console.log('delete task');
+          });
           return state.delete(action.id);
 
         case __WEBPACK_IMPORTED_MODULE_2__TaskActionTypes__["a" /* default */].TOGGLE_TASK:
@@ -64747,7 +64760,8 @@ var Counter = {
 var Task = __WEBPACK_IMPORTED_MODULE_0_immutable___default.a.Record({
   id: '',
   complete: false,
-  text: ''
+  text: '',
+  servId: ''
 });
 
 /* harmony default export */ __webpack_exports__["a"] = (Task);

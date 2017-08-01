@@ -68,7 +68,7 @@ class NewMain extends Component {
       })
       .then(tasks => {
         // alert(tasks);
-        tasks.map(tasks => (TaskActions.initTask(tasks.name)));
+        tasks.map(task => (TaskActions.initTask(task.name, task.id)));
         // TaskActions.fetchTasks(tasks);
         // this.setState({tasks});
       });
@@ -98,7 +98,7 @@ class NewMain extends Component {
                 <label>{task.text}</label>
                 <button
                   className="destroy"
-                  onClick={() => props.onDeleteTask(task.id)}
+                  onClick={() => props.onDeleteTask(task.id, task.servId)}
                 />
               </div>
             </li>
