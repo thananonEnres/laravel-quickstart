@@ -65,6 +65,7 @@ class TaskController extends Controller
     $tasks = $this->tasks->forUser($request->user());
     JavaScript::put([
       'url' => url('/api/tasks'),
+      'urlPost' => url('/task'),
     ]);
 
     return view('fluxtask');

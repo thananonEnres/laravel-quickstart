@@ -64645,11 +64645,19 @@ var TaskStore = function (_ReduceStore) {
           if (!action.text) {
             return state;
           }
-          return state.set(id, new __WEBPACK_IMPORTED_MODULE_5__Task__["a" /* default */]({
-            id: id,
-            text: action.text,
-            complete: false
-          }));
+          var oooh = document.getElementsByName('csrf-token')[0].content;
+          var formData = new FormData();
+          formData.append('_token', oooh);
+          formData.append('name', action.text);
+
+          fetch(window.urlPost, {
+            method: 'POST',
+            credentials: "same-origin",
+            body: formData
+          }).then(function (response) {
+            console.log('post task');
+            return response.json();
+          });
 
         case __WEBPACK_IMPORTED_MODULE_2__TaskActionTypes__["a" /* default */].INIT_TASK:
           if (!action.text) {
