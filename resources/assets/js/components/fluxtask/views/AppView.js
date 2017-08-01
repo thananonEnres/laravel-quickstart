@@ -68,7 +68,8 @@ class NewMain extends Component {
       })
       .then(tasks => {
         // alert(tasks);
-        TaskActions.fetchTasks(tasks);
+        tasks.map(tasks => (TaskActions.addTask(tasks.name)));
+        // TaskActions.fetchTasks(tasks);
         // this.setState({tasks});
       });
   }
